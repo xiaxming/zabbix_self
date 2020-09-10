@@ -1,0 +1,35 @@
+yum install -y zabbix-server-mysql zabbix-get zabbix-web zabbix-web-mysql zabbix-agent zabbix-sender
+
+./configure --prefix=/usr/local/zabbix  --enable-server  --enable-agent --enable-java  --with-mysql --with-libxml2 --with-unixodbc  --with-net-snmp --with-ssh2 --with-openipmi --with-ldap --with-libcurl --with-iconv
+
+1、时间不对
+2、mariadb  root初始密码修改
+3、xshell连不上
+4、zabbix-mysql，zabbix-web，zabbix-server-mysql，zabbix-web-mysql等安装不上
+5、php-mysql
+6、Admin zabbix
+7、bin目录还有get和sender
+8、脚本端口地址根据实际修改
+
+zabbix-web-4.4.10-1.el7.noarch.rpm  
+zabbix-web-mysql-4.4.10-1.el7.noarch.rpm 
+
+]# systemctl stop  mysqld.service 
+[root@localhost mysql]# systemctl stop  httpd.service 
+[root@localhost mysql]# systemctl stop  php-fpm.service 
+
+
+先起mysql  再起zabbix  再php   再httpd
+
+./configure --prefix=/usr/local/nginx --add-module=/root/nginx-module-vts  --with-http_stub_status_module --with-http_ssl_module
+location /nginx_status或者location /ngx_status
+
+自动发现，触发值，报警媒介，图像合并，物理层监控
+
+做一个安装流程
+
+server 里面放两个ip 一个自监，一个agent使用
+
+批量ansible，Prometheus监控
+
+
